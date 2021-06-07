@@ -5,6 +5,7 @@
  * @author Jayden
  * @version 3/06/2021
  */
+import ecs100.*;
 
 public class Profile {
     // CONSTANTS
@@ -15,7 +16,6 @@ public class Profile {
     private final int IMGWIDTH = 100;
     private final int IMGHEIGHT = 100;
     // Position of the text
-    private final int FONTSIZE = 12;
     private final int FONTX = 100;
     private final int FONTY = 100;
     private final int FONTSPACING = 10; // Distance between new lines
@@ -43,13 +43,15 @@ public class Profile {
      * Displays the entire profile's information onto the screen.
      */
     public void displayProfile() {
-
+        UI.drawString(name, FONTX, FONTY);
+        UI.drawString(number, FONTX, FONTY + FONTSPACING);
+        displayImg();
     }
 
     /**
      * Displays only the profile's image onto the screen.
      */
     public void displayImg() {
-        
+        UI.drawImage(file, XPOSITION, YPOSITION, IMGWIDTH, IMGHEIGHT);
     } 
 }

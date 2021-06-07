@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Profile
+comment1.params=profileFile\ profileName\ profileNumber
+comment1.target=Profile(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ assigning\ profile\ information\ to\ the\ class.\r\n\ @param\ profileFile\ \ file\ location\ of\ the\ profile\ image.\r\n\ @param\ profileName\ \ name\ of\ the\ profile.\r\n\ @param\ profileNumber\ \ profile's\ phone\ number.\r\n
+comment2.params=
+comment2.target=void\ displayProfile()
+comment2.text=\r\n\ Displays\ the\ entire\ profile's\ information\ onto\ the\ screen.\r\n
+comment3.params=
+comment3.target=void\ displayImg()
+comment3.text=\r\n\ Displays\ only\ the\ profile's\ image\ onto\ the\ screen.\r\n
+numComments=4
