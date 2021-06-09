@@ -31,6 +31,7 @@ public class Contacts {
     // Hashmap Layout - Name:[Number, File]
     private HashMap<String, String[]> contacts = new HashMap<String, String[]>();
     private Boolean isDisplayingProfile = false;
+    private Boolean isProfileHidden = false;
     private Profile currentProfile = new Profile(DEFAULTFILE, DEFAULTNAME, DEFAULTNUM);
 
     // METHODS
@@ -77,6 +78,7 @@ public class Contacts {
         if (testFile.exists()) { // Doesn't check if filetype is correct
             return true;
         }
+        UI.println("Sorry, this file doesn't exist.");
         return false;
     }
 
@@ -87,7 +89,7 @@ public class Contacts {
      * @param number  contact's phone number (NOTE: String since " " and "-"
      *      exist inside of phone numbers)
      */
-    public void addContact(String file, String name, String number) {
+    public void addContact(String name, String number, String file) {
         if (!duplicate(name)) { // Checks if name already exists
             // Creates contact info array
             String[] contactInfo = new String[CONTACTLENGTH];
@@ -101,9 +103,10 @@ public class Contacts {
 
             // Adds contact to contactList
             contacts.put(name, contactInfo);
+            UI.println("Contact successfully added");
 
         } else {
-            System.out.println("Sorry, this name has already been taken");
+            UI.println("Sorry, this name has already been taken");
         }
     }
 
@@ -116,7 +119,7 @@ public class Contacts {
         if (duplicate(name)) { // Checks if name in contacts
             return contacts.get(name);
         } else {
-            System.out.println("Sorry, this name doesn't exist");
+            UI.println("Sorry, this name doesn't exist");
             
             // Constructs a fake contact as to not crash whatever script called getContact
             String[] defContact = new String[CONTACTLENGTH];
@@ -133,6 +136,9 @@ public class Contacts {
      * @param contactInfo number/file of contact
      */
     public void displayContact(String name, String[] contactInfo) {
+        isDisplayingProfile = false;
+        hideInfo();
+        isDisplayingProfile = true;
         // Seperates String Array
         String number = contactInfo[0];
         String file = contactInfo[1];
@@ -149,6 +155,8 @@ public class Contacts {
      * can add (Likely around a couple dozen)
      */
     public void displayAll() {
+        isDisplayingProfile = false;
+        hideInfo();
         int contactCount = 0;
         for (String contactName : contacts.keySet()) {
             UI.drawString(contactName, DISPLAYALLX, DISPLAYALLY + DISPLAYALLSPACING * contactCount);
@@ -189,7 +197,7 @@ public class Contacts {
         }
 
         if (!foundContact) {
-            System.out.println("Unable to find contact");
+            UI.println("Unable to find contact");
         }
     }
 
@@ -232,10 +240,30 @@ public class Contacts {
         if (contacts.size() < MAXCONTACTS) {
            addContact(newContactName, newContactNumber, newContactFile);
         } else {
-            System.out.println("Sorry, you have reached the maximum amount of contacts");
+            UI.println("Sorry, you have reached the maximum amount of contacts");
         }
     }
-
+    
+    // MOUSE INTERFACE
+    /**
+     * Manages any recieved mouse inputs when clicked
+     * @param action  action mouse has done
+     * @param x  x position of mouse
+     * @param y  y position of mouse
+     */
+    public void doMouse(String action, double x, double y) {
+        if (action.equals("pressed") && isDisplayingProfile) {
+            if (x < 100 && y < 100) {
+                if (isProfileHidden) {
+                    isProfileHidden = false;
+                    currentProfile.displayProfile();
+                } else {
+                    isProfileHidden = true;
+                    hideInfo();
+                }
+            }
+        }
+    }
 
 
     // MAIN ROUTINE
@@ -245,6 +273,10 @@ public class Contacts {
     public static void main(String[] args) {
         // Class initializations
         Contacts c = new Contacts(); // Main routine class
+
+        // Mouse interaction
+        
+        UI.setMouseListener(c::doMouse);
 
         // Buttons/text fields to interact with contacts
         UI.addTextField("Name", c::storeNewName);

@@ -33,7 +33,7 @@ public class Profile {
      * @param profileName  name of the profile.
      * @param profileNumber  profile's phone number.
      */
-    public Profile(String profileFile, String profileName, String profileNumber) {
+    public Profile(String profileName, String profileNumber, String profileFile) {
         file = profileFile;
         name = profileName;
         number = profileNumber;
