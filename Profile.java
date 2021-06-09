@@ -29,14 +29,14 @@ public class Profile {
     // METHODS
     /**
      * Constructor for assigning profile information to the class.
-     * @param profileFile  file location of the profile image.
-     * @param profileName  name of the profile.
-     * @param profileNumber  profile's phone number.
+     * @param profFile  file location of the profile image.
+     * @param profName  name of the profile.
+     * @param profNumber  profile's phone number.
      */
-    public Profile(String profileName, String profileNumber, String profileFile) {
-        file = profileFile;
-        name = profileName;
-        number = profileNumber;
+    public Profile(String profName, String profNumber, String profFile) {
+        file = profFile;
+        name = profName;
+        number = profNumber;
     }
 
     /**
@@ -59,6 +59,8 @@ public class Profile {
      * Checks if a given x, y coordinate is within the image space
      * @param x  x coordinate
      * @param y  y coordinate
+     * 
+     * @return  Returns whether mouse click was in img region
      */
     public Boolean checkImgRegion(double x, double y) {
         if (x > XPOSITION && x < IMGWIDTH && y > YPOSITION && y < IMGHEIGHT) {

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Profile
-comment1.params=profileName\ profileNumber\ profileFile
+comment1.params=profName\ profNumber\ profFile
 comment1.target=Profile(java.lang.String,\ java.lang.String,\ java.lang.String)
-comment1.text=\r\n\ Constructor\ for\ assigning\ profile\ information\ to\ the\ class.\r\n\ @param\ profileFile\ \ file\ location\ of\ the\ profile\ image.\r\n\ @param\ profileName\ \ name\ of\ the\ profile.\r\n\ @param\ profileNumber\ \ profile's\ phone\ number.\r\n
+comment1.text=\r\n\ Constructor\ for\ assigning\ profile\ information\ to\ the\ class.\r\n\ @param\ profFile\ \ file\ location\ of\ the\ profile\ image.\r\n\ @param\ profName\ \ name\ of\ the\ profile.\r\n\ @param\ profNumber\ \ profile's\ phone\ number.\r\n
 comment2.params=
 comment2.target=void\ displayProfile()
 comment2.text=\r\n\ Displays\ the\ entire\ profile's\ information\ onto\ the\ screen.\r\n
@@ -10,6 +10,6 @@ comment3.params=
 comment3.target=void\ displayImg()
 comment3.text=\r\n\ Displays\ only\ the\ profile's\ image\ onto\ the\ screen.\r\n
 comment4.params=x\ y
-comment4.target=void\ checkImgRegion(double,\ double)
-comment4.text=\r\n\ Checks\ if\ a\ given\ x,\ y\ coordinate\ is\ within\ the\ image\ space\r\n\ @param\ x\ \ x\ coordinate\r\n\ @param\ y\ \ y\ coordinate\r\n
+comment4.target=java.lang.Boolean\ checkImgRegion(double,\ double)
+comment4.text=\r\n\ Checks\ if\ a\ given\ x,\ y\ coordinate\ is\ within\ the\ image\ space\r\n\ @param\ x\ \ x\ coordinate\r\n\ @param\ y\ \ y\ coordinate\r\n\ \r\n\ @return\ \ Returns\ whether\ mouse\ click\ was\ in\ img\ region\r\n
 numComments=5
