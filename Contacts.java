@@ -253,7 +253,7 @@ public class Contacts {
      */
     public void doMouse(String action, double x, double y) {
         if (action.equals("pressed") && isDisplayingProfile) {
-            if (x < 100 && y < 100) {
+            if (currentProfile.checkImgRegion(x, y)) {
                 if (isProfileHidden) {
                     isProfileHidden = false;
                     currentProfile.displayProfile();

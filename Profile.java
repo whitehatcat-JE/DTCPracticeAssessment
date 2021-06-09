@@ -53,5 +53,18 @@ public class Profile {
      */
     public void displayImg() {
         UI.drawImage(file, XPOSITION, YPOSITION, IMGWIDTH, IMGHEIGHT);
-    } 
+    }
+    
+    /**
+     * Checks if a given x, y coordinate is within the image space
+     * @param x  x coordinate
+     * @param y  y coordinate
+     */
+    public Boolean checkImgRegion(double x, double y) {
+        if (x > XPOSITION && x < IMGWIDTH && y > YPOSITION && y < IMGHEIGHT) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
